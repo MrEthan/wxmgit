@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ethan.food;
 
 public class Test {
