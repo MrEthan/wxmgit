@@ -1,46 +1,43 @@
-/**
-类和抽象
-*/
+class A {
+    public String show(D obj) {
+        return ("A and D");
+    }
+    public String show(A obj) {
+        return ("A and A");
+    } 
 
-public class Test
-{
-	public static void main(String[] args)
-	{
-		Torch t = new Torch(99); //创建的时候，利用构造函数初始化电量数据
-		t.Charge();
-		t.Switch(true);
-	}
+}
+class B extends A{
+    public String show(B obj){
+        return ("B and B");
+    }
+    
+    public String show(A obj){
+        return ("B and A");
+    } 
+}
+class C extends B{
+
+}
+class D extends B{
 }
 
-class Torch
-{
-		//定义构造函数
-		Torch(int i)
-		{
-			this.Energe = i; //初始化电量
-		}
-    public void Charge()
-    {
-    	System.out.println("I am charging!");
-    	System.out.println("Energe:" + this.GetEnergeLeft() + "\n");
+public class Test {
+    public static void main(String[] args) {
+        A a1 = new A();
+        A a2 = new B();
+        B b = new B();
+        C c = new C();
+        D d = new D();
+        
+        System.out.println("1--" + a1.show(b));
+        System.out.println("2--" + a1.show(c));
+        System.out.println("3--" + a1.show(d));
+        System.out.println("4--" + a2.show(b));
+        System.out.println("5--" + a2.show(c));
+        System.out.println("6--" + a2.show(d));
+        System.out.println("7--" + b.show(b));
+        System.out.println("8--" + b.show(c));
+        System.out.println("9--" + b.show(d));      
     }
-    
-    public void Switch(boolean onoff)
-    {
-      if(true == onoff)
-      {
-      	System.out.printf("Turn on the Torch!\n");
-      }
-      else
-      {
-      	System.out.printf("Turn off the Torch!\n");
-      }
-    }
-    
-    private int GetEnergeLeft() //内部私有方法，只能在类的内部调用
-    {
-    	return this.Energe;
-    }
-    
-    private int Energe; //电量
 }
